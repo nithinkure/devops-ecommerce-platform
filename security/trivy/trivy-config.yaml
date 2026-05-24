@@ -1,0 +1,35 @@
+# Trivy Security Scan Configuration
+
+scan:
+  # Scan types
+  security-checks:
+    - vuln
+    - config
+    - secret
+
+  # Severity levels
+  severity:
+    - CRITICAL
+    - HIGH
+    - MEDIUM
+
+  # Output format
+  format: table
+
+  # Exit code on vulnerabilities found
+  exit-code: 0
+
+  # Ignore unfixed vulnerabilities
+  ignore-unfixed: false
+
+  # Timeout
+  timeout: 10m
+
+# Images to scan
+images:
+  - nithin12222/ecommerce-frontend:latest
+  - nithin12222/ecommerce-auth-service:latest
+  - nithin12222/ecommerce-product-service:latest
+  - nithin12222/ecommerce-order-service:latest
+  - nithin12222/ecommerce-payment-service:latest
+  - nithin12222/ecommerce-notification-service:latest
