@@ -1,0 +1,49 @@
+version: '3.8'
+
+services:
+  frontend:
+    build: ./frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - auth-service
+      - product-service
+      - order-service
+      - payment-service
+      - notification-service
+
+  auth-service:
+    build: ./backend/auth-service
+    ports:
+      - "4001:4001"
+    environment:
+      - PORT=4001
+      - JWT_SECRET=supersecretkey123
+
+  product-service:
+    build: ./backend/product-service
+    ports:
+      - "4002:4002"
+    environment:
+      - PORT=4002
+
+  order-service:
+    build: ./backend/order-service
+    ports:
+      - "4003:4003"
+    environment:
+      - PORT=4003
+
+  payment-service:
+    build: ./backend/payment-service
+    ports:
+      - "4004:4004"
+    environment:
+      - PORT=4004
+
+  notification-service:
+    build: ./backend/notification-service
+    ports:
+      - "4005:4005"
+    environment:
+      - PORT=4005
